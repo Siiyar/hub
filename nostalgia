@@ -3,7 +3,10 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Main = Library:Create("Nostalgia Hub", "Crossroad") -- Creates Main Window | Fuzki (Hub Name) | Baseplate (Game Name)
 
 local Combat = Main:CreateSection("Combat")
+local Misc = Main:CreateSection("Misc.")
 local Preview = Main:CreateSection("Preview")
+
+
 
 local cheater = game:GetService("Players").LocalPlayer
 
@@ -11,7 +14,6 @@ local cheater = game:GetService("Players").LocalPlayer
 
 Combat:CreateLabel("Combat cheats.")
 Combat:CreateToggle("Toggle Info", function(state) 
-    print(state)
     local sword = "Sword"
     _G.autoEq = state
 
@@ -36,6 +38,17 @@ Combat:CreateButton("Click me browski", "Loopkill all", function()
     cheater:Kick("get out loser")
 end)
 
+--- Misc
+Misc:CreateButton("Check", "Check your Executor Level", function() -- creates button (CreateButton)
+    local args = {
+    [1] = "My executor Level is "..Identity(),
+    [2] = "All"
+    }
+
+    game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(unpack(args))
+end)
+
+
 -- Notification (literally use it idgaf)
 local notification = Instance.new("Sound")
 
@@ -44,11 +57,29 @@ notification.SoundId = "rbxassetid://9086208751"
 notification.Volume = 5
 notification.Name = "Nostalgia Hub"
 notification:Play()
-game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "Nostalgia Hub";
-	Text = "whats good bitch have fun usin it, made by @siiyar";
-	Icon = "";
-	Duration = 10; 
-	Button1 = "thanks?";
-})
+if KRNL_LOADED then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Nostalgia Hub";
+        Text = "Hello KRNL User, have fun! Made by @siiyar";
+        Icon = "rbxassetid://13787869811";
+        Duration = 10; 
+        Button1 = "thanks bbg";
+    })
+elseif syn then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Nostalgia Hub";
+        Text = "Hello Synapse X User, have fun! Made by @siiyar";
+        Icon = "rbxassetid://9524079134";
+        Duration = 10; 
+        Button1 = "thanks bbg";
+    })
+elseif Valyse then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Nostalgia Hub";
+        Text = "Hello Valyse user, have fun! Made by @siiyar";
+        Icon = "";
+        Duration = 10; 
+        Button1 = "thanks bbg";
+    })
+end
 end
