@@ -1,17 +1,17 @@
 if game.placeId == 487316 then
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Fuzki-UI-Library/main/FuzkiLibrary.lua"))() -- Gets the Library
-local Main = Library:Create("Nostalgia Hub", "Crossroad") -- Creates Main Window | Fuzki (Hub Name) | Baseplate (Game Name)
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Fuzki-UI-Library/main/FuzkiLibrary.lua"))()
+local Main = Library:Create("Nostalgia Hub", "SFOTH")
 
+-- Sections
 local Combat = Main:CreateSection("Combat")
+local Player = Main:CreateSection("Local Player")
 local Misc = Main:CreateSection("Misc.")
 local Preview = Main:CreateSection("Preview")
 
-
-
+-- just local variables
 local cheater = game:GetService("Players").LocalPlayer
 
-
-
+-- Combat
 Combat:CreateLabel("Combat cheats.")
 Combat:CreateToggle("Toggle Info", function(state) 
     local sword = "Sword"
@@ -38,15 +38,20 @@ Combat:CreateButton("Click me browski", "Loopkill all", function()
     cheater:Kick("get out loser")
 end)
 
---- Misc
-Misc:CreateButton("Check", "Check your Executor Level", function() -- creates button (CreateButton)
-    local args = {
-    [1] = "My executor Level is "..Identity(),
-    [2] = "All"
-    }
+--- Player
+Player:CreateToggle("Make heal pads unusable / always heal", function(state)
+    _G.fuckHeal = state
 
-    game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(unpack(args))
+    while wait() and _G.fuckHeal == true do
+        firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 0)
+    end
 end)
+
+--- Misc
+
+
+
+--------------
 
 
 -- Notification (literally use it idgaf)
@@ -65,6 +70,14 @@ if KRNL_LOADED then
         Duration = 10; 
         Button1 = "thanks bbg";
     })
+elseif Valyse then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Nostalgia Hub";
+        Text = "Hello Valyse user, have fun! Made by @siiyar";
+        Icon = "";
+        Duration = 10; 
+        Button1 = "thanks bbg";
+    })
 elseif syn then
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Nostalgia Hub";
@@ -73,10 +86,18 @@ elseif syn then
         Duration = 10; 
         Button1 = "thanks bbg";
     })
-elseif Valyse then
+elseif ScriptWare then
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Nostalgia Hub";
-        Text = "Hello Valyse user, have fun! Made by @siiyar";
+        Text = "Hello ScriptWare user, have fun! Made by @siiyar";
+        Icon = "";
+        Duration = 10; 
+        Button1 = "thanks bbg";
+    })
+else
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Nostalgia Hub";
+        Text = "Hello Unknown Executor User, have fun! Made by @siiyar";
         Icon = "";
         Duration = 10; 
         Button1 = "thanks bbg";
