@@ -42,10 +42,14 @@ end)
 Player:CreateToggle("Make heal pads unusable / always heal", function(state)
     _G.fuckHeal = state
 
-    while wait() and _G.fuckHeal == true do
+    while _G.fuckHeal == true do
         firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 0)
-    end
+        wait()
+        firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
+    end 
 end)
+-- this was fucking stupid to make
+
 
 --- Misc
 
