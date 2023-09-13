@@ -50,9 +50,10 @@ Player:CreateToggle("Make heal pads unusable / always heal", function(state)
 end)
 -- this was fucking stupid to make
 
-
 --- Misc
-
+Misc:CreateButton("Apply", "Apply Anti chat logger", function() -- creates button (CreateButton)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/AnthonyIsntHere/anthonysrepository/main/scripts/AntiChatLogger.lua"))()
+end)
 
 
 --------------
