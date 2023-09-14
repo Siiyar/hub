@@ -1,65 +1,11 @@
+if not game:IsLoaded() then
+    game.Loaded:wait()
+end
+
 if game.placeId == 487316 then
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Fuzki-UI-Library/main/FuzkiLibrary.lua"))()
 local Main = Library:Create("Nostalgia Hub", "SFOTH")
 
--- Sections
-local Combat = Main:CreateSection("Combat")
-local Player = Main:CreateSection("Local Player")
-local Misc = Main:CreateSection("Misc.")
-local Preview = Main:CreateSection("Preview")
-
--- just local variables
-local cheater = game:GetService("Players").LocalPlayer
-
--- Combat
-Combat:CreateLabel("Combat cheats.")
-Combat:CreateToggle("Toggle Info", function(state) 
-    local sword = "Sword"
-    _G.autoEq = state
-
-    while wait() and _G.autoEq == true do
-        pcall(function()
-            if cheater.Backpack:FindFirstChild(sword) and cheater.Character:FindFirstChild(sword) == nil then
-                local tool = cheater.Backpack:FindFirstChild(sword)
-                cheater.Character.Humanoid:EquipTool(tool)
-            end
-        end)
-    end
-end)
-
-Combat:CreateButton("Click me browski", "Loopkill all", function()
-    local args = {
-    [1] = "(Nostalgia Hub) lol im a loser and got kicked by a troll feature",
-    [2] = "All"
-    }
-
-    game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(unpack(args))
-    wait(0.1)
-    cheater:Kick("get out loser")
-end)
-
---- Player
-Player:CreateToggle("Make heal pads unusable / always heal", function(state)
-    _G.fuckHeal = state
-
-    while _G.fuckHeal == true do
-        firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 0)
-        wait()
-        firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
-    end 
-end)
--- this was fucking stupid to make
-
---- Misc
-Misc:CreateButton("Apply", "Apply Anti chat logger", function() -- creates button (CreateButton)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/AnthonyIsntHere/anthonysrepository/main/scripts/AntiChatLogger.lua"))()
-end)
-
-
---------------
-
-
--- Notification (literally use it idgaf)
 local notification = Instance.new("Sound")
 
 notification.Parent = game:GetService("SoundService")
@@ -108,4 +54,101 @@ else
         Button1 = "thanks bbg";
     })
 end
+
+
+-- Sections
+local Combat = Main:CreateSection("Combat")
+local Player = Main:CreateSection("Local Player")
+local Misc = Main:CreateSection("Misc.")
+
+-- just local variables
+local cheater = game:GetService("Players").LocalPlayer
+
+-- Combat
+Combat:CreateLabel("Combat cheats.")
+Combat:CreateToggle("Toggle Info", function(state) 
+    local sword = "Sword"
+    getgenv().autoEq = state
+
+    while wait() and autoEq == true do
+        pcall(function()
+            if cheater.Backpack:FindFirstChild(sword) and cheater.Character:FindFirstChild(sword) == nil then
+                local tool = cheater.Backpack:FindFirstChild(sword)
+                cheater.Character.Humanoid:EquipTool(tool)
+            end
+        end)
+    end
+end)
+
+Combat:CreateButton("Click me browski", "Loopkill all", function()
+    local args = {
+    [1] = "(Nostalgia Hub) lol im a loser and got kicked by a troll feature",
+    [2] = "All"
+    }
+
+    game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(unpack(args))
+    wait(0.1)
+    cheater:Kick("get out loser")
+end)
+
+--- Player
+Player:CreateSlider(16, 500, "Walkspeed", function(val) 
+    cheater.Humanoid.WalkSpeed = val
+end)
+
+Player:CreateSlider(16, 500, "Jumppower", function(val)
+    cheater.Humanoid.JumpPower = val
+end)
+
+Player:CreateButton("Apply", "Get 200 HP", function()
+    firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 0)
+    firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
+    wait(0.8)
+    firetouchinterest(game:GetService("Workspace").Regen.BattleArmorStand.BattleArmor, game.Players.LocalPlayer.Character.HumanoidRootPart, 0)
+    firetouchinterest(game:GetService("Workspace").Regen.BattleArmorStand.BattleArmor, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
+end)
+
+
+Player:CreateToggle("Make heal pads unusable / always heal", function(state)
+    getgenv().fuckHeal = state
+
+    while fuckHeal == true do 
+        firetouchinterest(game:GetService("Workspace").GetChildren()[14].Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 0)
+        firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 0)
+        wait()
+        firetouchinterest(game:GetService("Workspace").GetChildren()[14].Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
+        firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
+    end 
+end)
+-- BROKEN
+
+
+--- Misc
+Misc:CreateButton("Execute", "Rejoin", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/1gtVMUz3"))()
+end)
+
+Misc:CreateButton("Execute", "Serverhop", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/vgTwZAXi"))()
+end)
+
+Misc:CreateButton("Apply", "Apply Anti chat logger", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/AnthonyIsntHere/anthonysrepository/main/scripts/AntiChatLogger.lua"))()
+end)
+
+Misc:CreateButton("Apply", "Apply Anti-AFK", function()
+    local vu = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+       vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+       wait(1)
+       vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+    notification:Play()
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Nostalgia Hub";
+        Text = "Executed Anti-AFK";
+        Icon = "";
+        Duration = 2; 
+    })
+end)
 end
