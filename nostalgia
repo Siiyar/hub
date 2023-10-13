@@ -42,7 +42,7 @@ Combat:CreateButton("Click me browski", "Loopkill all", function()
 end)
 
 --- Player
-Player:CreateButton("Apply", "Get 200 HP", function()
+Player:CreateButton("Apply", "Get 200 HP ( Buggy )", function()
     print("sex")
 end)
 
@@ -50,20 +50,21 @@ Player:CreateToggle("Anti Heal", function(state)
     getgenv().antiHeal = state
 
     spawn(function()
-            while antiHeal == true do
+            while antiHeal == true and cheater.Character.Humanoid.Health == 100 or 50 or 0 do
             game.Players.LocalPlayer.Character.Humanoid.Sit = true
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-124, 254.999985, 4, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-            wait()
+            task.wait(0.001)
         end
     end)
     spawn(function()
-            while antiHeal == true do
+            while antiHeal == true and cheater.Character.Humanoid.Health == 100 or 50 or 0 do
             game.Players.LocalPlayer.Character.Humanoid.Sit = true
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136, 246.599991, 2, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-            wait()
+            task.wait(0.01)
         end
     end)
 end)
+
 -- i will do a second version at some point
 
 --- Misc
