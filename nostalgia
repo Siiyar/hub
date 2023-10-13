@@ -14,7 +14,6 @@ local Preview = Main:CreateSection("Preview")
 
 -- just local variables
 local cheater = game:GetService("Players").LocalPlayer
-
 -- Combat
 Combat:CreateLabel("Combat cheats.")
 Combat:CreateToggle("Toggle Info", function(state) 
@@ -50,26 +49,21 @@ end)
 Player:CreateToggle("Anti Heal", function(state)
     getgenv().antiHeal = state
 
-    while antiHeal == true do
-        cheater.Character.Humanoid.Sit = true
-        firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 0)
-        firetouchinterest(game:GetService("Workspace").HealPad.Pad, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136, 246.599991, 2, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-        wait()
-    end
+    spawn(function()
+            while antiHeal == true do
+            game.Players.LocalPlayer.Character.Humanoid.Sit = true
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-124, 254.999985, 4, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            wait()
+        end
+    end)
+    spawn(function()
+            while antiHeal == true do
+            game.Players.LocalPlayer.Character.Humanoid.Sit = true
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136, 246.599991, 2, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            wait()
+        end
+    end)
 end)
-
-
-Player:CreateToggle("Anti Heal V2 BROKEN", function(state)
-    getgenv().antiHeal2 = state
-    
-    while antiHeal2 == true do
-        game.Players.LocalPlayer.Character.LeftArm.CFrame = CFrame.new(-124, 254.999985, 4, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136, 246.599991, 2, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-        wait()
-    end
-end)
-
 -- i will do a second version at some point
 
 --- Misc
@@ -129,5 +123,4 @@ else
         Duration = 10; 
         Button1 = "thanks bbg";
     })
-end
-end
+end end
