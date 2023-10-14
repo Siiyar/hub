@@ -10,13 +10,12 @@ local Main = Library:Create("Nostalgia Hub", "SFOTH")
 local Combat = Main:CreateSection("Combat")
 local Player = Main:CreateSection("Local Player")
 local Misc = Main:CreateSection("Misc.")
-local Preview = Main:CreateSection("Preview")
 
 -- just local variables
 local cheater = game:GetService("Players").LocalPlayer
 -- Combat
 Combat:CreateLabel("Combat cheats.")
-Combat:CreateToggle("Toggle Info", function(state) 
+Combat:CreateToggle("Equip Spam Sword", function(state) 
     local sword = "Sword"
     _G.autoEq = state
 
@@ -50,19 +49,24 @@ Player:CreateToggle("Anti Heal", function(state)
     getgenv().antiHeal = state
 
     spawn(function()
-            while antiHeal == true and cheater.Character.Humanoid.Health == 100 or 50 or 0 do
+            while antiHeal == true do
             game.Players.LocalPlayer.Character.Humanoid.Sit = true
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-124, 254.999985, 4, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-            task.wait(0.001)
-        end
-    end)
-    spawn(function()
-            while antiHeal == true and cheater.Character.Humanoid.Health == 100 or 50 or 0 do
-            game.Players.LocalPlayer.Character.Humanoid.Sit = true
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136, 246.599991, 2, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-124, 252.5, 4, -1, 0, 0, 0, 1, 0, 0, 0, -1)
             task.wait(0.01)
         end
     end)
+    spawn(function()
+            while antiHeal == true do
+            game.Players.LocalPlayer.Character.Humanoid.Sit = true
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136, 243.5, 2, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            task.wait(0.1)
+        end
+    end)
+    if antiHeal == false then
+        cheater.Character.HumanoidRootPart.CFrame = CFrame.new(-0, 279, 3)
+        wait()
+        cheater.Character.Humanoid.Sit = false
+    end
 end)
 
 -- i will do a second version at some point
@@ -124,4 +128,6 @@ else
         Duration = 10; 
         Button1 = "thanks bbg";
     })
-end end
+end
+elseif game.placeId == 12109643 then
+end
