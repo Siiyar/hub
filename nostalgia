@@ -45,25 +45,43 @@ Player:CreateButton("Apply", "Get 200 HP ( Buggy )", function()
     print("sex")
 end)
 
+
+
+
 Player:CreateToggle("Anti Heal", function(state)
     getgenv().antiHeal = state
 
     spawn(function()
             while antiHeal == true do
-            game.Players.LocalPlayer.Character.Humanoid.Sit = true
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-124, 252.5, 4, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-            task.wait(0.01)
+            cheater.Character.Humanoid.Sit = true
+            cheater.Character.HumanoidRootPart.CFrame = CFrame.new(-124, 252.5, 4, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            task.wait(0.05)
+        end
+    end)
+    spawn(function()
+            while antiHeal == true do
+            cheater.Character.Humanoid.Sit = true
+            cheater.Character.HumanoidRootPart.CFrame = CFrame.new(-1, -7, -13)
+            task.wait(0.10)
         end
     end)
     spawn(function()
             while antiHeal == true do
             game.Players.LocalPlayer.Character.Humanoid.Sit = true
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136, 243.5, 2, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-            task.wait(0.1)
+            task.wait(0.20)
         end
     end)
+    spawn(function()
+            while antiHeal == true do
+            cheater.Character.Humanoid.Sit = true
+            cheater.Character.HumanoidRootPart.CFrame = CFrame.new(-1, -7, -13)
+            task.wait(0.23)
+        end
+    end)
+
     if antiHeal == false then
-        cheater.Character.HumanoidRootPart.CFrame = CFrame.new(-0, 279, 3)
+        cheater.Character.HumanoidRootPart.CFrame = CFrame.new(5, 248, -145)
         wait()
         cheater.Character.Humanoid.Sit = false
     end
