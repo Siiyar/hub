@@ -6,49 +6,30 @@ if game.placeId == 487316 then
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Fuzki-UI-Library/main/FuzkiLibrary.lua"))()
 local Main = Library:Create("Nostalgia Hub", "SFOTH")
 
+
 -- Sections
 local Combat = Main:CreateSection("Combat")
-local Player = Main:CreateSection("Local Player")
+local Client = Main:CreateSection("Client")
 local Misc = Main:CreateSection("Misc.")
 
--- just local variables
-local cheater = game:GetService("Players").LocalPlayer
+--variables
+local cheater = game.Players.LocalPlayer
+
+
 -- Combat
-Combat:CreateLabel("Combat cheats.")
-Combat:CreateToggle("Equip Spam Sword", function(state) 
-    local sword = "Sword"
-    _G.autoEq = state
+Combat:CreateLabel("nothing yet lol")
 
-    while wait() and _G.autoEq == true do
-        pcall(function()
-            if cheater.Backpack:FindFirstChild(sword) and cheater.Character:FindFirstChild(sword) == nil then
-                local tool = cheater.Backpack:FindFirstChild(sword)
-                cheater.Character.Humanoid:EquipTool(tool)
-            end
-        end)
-    end
+--- Client
+Client:CreateSlider(16, 300, "Walkspeed", function(val)
+    cheater.Character.Humanoid.WalkSpeed = val
 end)
 
-Combat:CreateButton("Click me browski", "Loopkill all", function()
-    local args = {
-    [1] = "(Nostalgia Hub) lol im a loser and got kicked by a troll feature",
-    [2] = "All"
-    }
-
-    game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(unpack(args))
-    wait(0.1)
-    cheater:Kick("get out loser")
-end)
-
---- Player
-Player:CreateButton("Apply", "Get 200 HP ( Buggy )", function()
-    print("sex")
+Client:CreateSlider(16, 300, "Jumppower", function(val)
+    cheater.Character.Humanoid.JumpPower = val
 end)
 
 
-
-
-Player:CreateToggle("Anti Heal", function(state)
+Combat:CreateToggle("Anti Heal", function(state)
     getgenv().antiHeal = state
 
     spawn(function()
@@ -56,96 +37,33 @@ Player:CreateToggle("Anti Heal", function(state)
             cheater.Character.Humanoid.Sit = true
             cheater.Character.HumanoidRootPart.CFrame = CFrame.new(-124, 252.5, 4, -1, 0, 0, 0, 1, 0, 0, 0, -1)
             task.wait(0.05)
-        end
-    end)
-    spawn(function()
-            while antiHeal == true do
-            cheater.Character.Humanoid.Sit = true
             cheater.Character.HumanoidRootPart.CFrame = CFrame.new(-1, -7, -13)
-            task.wait(0.10)
-        end
-    end)
-    spawn(function()
-            while antiHeal == true do
-            game.Players.LocalPlayer.Character.Humanoid.Sit = true
+            task.wait(0.05)
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136, 243.5, 2, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-            task.wait(0.20)
-        end
-    end)
-    spawn(function()
-            while antiHeal == true do
-            cheater.Character.Humanoid.Sit = true
+            task.wait(0.05)
             cheater.Character.HumanoidRootPart.CFrame = CFrame.new(-1, -7, -13)
-            task.wait(0.23)
+            task.wait()
         end
     end)
 
-    if antiHeal == false then
+    if cheater.Character.Humanoid.Health == 0 then
+        antiHeal = false
+    elseif antiHeal == false then
         cheater.Character.HumanoidRootPart.CFrame = CFrame.new(5, 248, -145)
         wait()
         cheater.Character.Humanoid.Sit = false
     end
 end)
 
--- i will do a second version at some point
-
 --- Misc
-Misc:CreateButton("Apply", "Apply Anti chat logger", function() -- creates button (CreateButton)
+Misc:CreateButton("Apply", "Apply Anti chat logger", function()
+    -- credits to AnthonyIsntHere
     loadstring(game:HttpGet("https://raw.githubusercontent.com/AnthonyIsntHere/anthonysrepository/main/scripts/AntiChatLogger.lua"))()
 end)
 
+-- detection
+loadstring(game:HttpGet("https://pastebin.com/raw/1gv8s32s"))()
 
---------------
 
 
--- Notification (literally use it idgaf)
-local notification = Instance.new("Sound")
-
-notification.Parent = game:GetService("SoundService")
-notification.SoundId = "rbxassetid://9086208751"
-notification.Volume = 5
-notification.Name = "Nostalgia Hub"
-notification:Play()
-if KRNL_LOADED then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Nostalgia Hub";
-        Text = "Hello KRNL User, have fun! Made by @siiyar";
-        Icon = "rbxassetid://13787869811";
-        Duration = 10; 
-        Button1 = "thanks bbg";
-    })
-elseif Valyse then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Nostalgia Hub";
-        Text = "Hello Valyse user, have fun! Made by @siiyar";
-        Icon = "";
-        Duration = 10; 
-        Button1 = "thanks bbg";
-    })
-elseif syn then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Nostalgia Hub";
-        Text = "Hello Synapse X User, have fun! Made by @siiyar";
-        Icon = "rbxassetid://9524079134";
-        Duration = 10; 
-        Button1 = "thanks bbg";
-    })
-elseif ScriptWare then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Nostalgia Hub";
-        Text = "Hello ScriptWare user, have fun! Made by @siiyar";
-        Icon = "";
-        Duration = 10; 
-        Button1 = "thanks bbg";
-    })
-else
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Nostalgia Hub";
-        Text = "Hello Unknown Executor User, have fun! Made by @siiyar";
-        Icon = "";
-        Duration = 10; 
-        Button1 = "thanks bbg";
-    })
-end
-elseif game.placeId == 12109643 then
 end
